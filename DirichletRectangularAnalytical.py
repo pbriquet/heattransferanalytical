@@ -2,9 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt 
 from matplotlib import cm
 
-class DirichletRectangular:
+class NeumannRectangular:
     """ 
-    This is a class for analytical solution of Diffusion in d dimensions with constant Dirichlet condition at boundaries (1,1,1), and zero flux at center (0,0,0) (symmetry condition).
+    This is a class for analytical solution of Diffusion in d dimensions with constant Neumann condition at boundaries (1,1,1), and zero flux at center (0,0,0) (symmetry condition).
     \nAt Init, the user can define the number of dimensions (dim=3), number of eigenvalues at each dimnesion (n_eigen=100), and scale of body (a,b,c) (scale=[1.0,1.0,1.0])
     \nBefore calculating the solution, the user must fix a position with prepare_solution(coordinate=[0.0,0.0,0.0])
     \n- solution(t):\t Calculate for each instant. The function doesn't accept "t" arrays yet.
@@ -14,8 +14,8 @@ class DirichletRectangular:
 
     @staticmethod
     def copy(solution):
-        if(isinstance(solution,DirichletRectangular)):
-            tmp = DirichletRectangular(dim=solution.dim,n_eigen=1,scale=solution.scale,zerofluxcenter=solution.zerofluxcenter)
+        if(isinstance(solution,NeumannRectangular)):
+            tmp = NeumannRectangular(dim=solution.dim,n_eigen=1,scale=solution.scale,zerofluxcenter=solution.zerofluxcenter)
             tmp.n_eigen = solution.n_eigen
             tmp.mesh_l = solution.mesh_l
             tmp.mesh_scaled_l = solution.mesh_scaled_l
