@@ -70,7 +70,7 @@ class RobinRectangular:
 
 if __name__=='__main__':
     number_of_positions = 5
-    analytical = RobinRectangular(dim=1,n_eigen=100)
+    analytical = RobinRectangular(dim=1,n_eigen=100,scale=[3.0,1.0,1.0])
     a_array = [RobinRectangular.copy(analytical) for i in range(number_of_positions)]
     b_array = [{'X':[],'Y':[]} for i in range(number_of_positions)]
     for i in range(number_of_positions):
@@ -85,4 +85,7 @@ if __name__=='__main__':
     ax =fig.add_subplot(111)
     for k,v in enumerate(b_array):
         ax.plot(v['X'],v['Y'])
+    plt.xlabel(r'$\tau$' + ' (-)')
+    plt.ylabel(r'$\frac{T-T_\infty}{T_0-T_\infty}$')
+    plt.legend()
     plt.show()
